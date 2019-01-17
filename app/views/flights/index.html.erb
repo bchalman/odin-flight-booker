@@ -15,7 +15,7 @@
 </div>
 <div class = "form row">
   <%= label_tag "Number of passengers:" %>
-  <%= select_tag(:num_passengers, options_for_select(@num_passengers)) %>
+  <%= select_tag(:num_passengers, options_for_select(@num_passenger_options)) %>
 </div>
 
 <div class = "form">
@@ -26,9 +26,9 @@
 <% unless @queried_flights.empty? %>
   <h3>Select from:</h3>
 
-  <%= form_for(@flight, url: flights_path, method: :get) do |f| %>
+  <%= form_tag new_booking_path, method: :get do %>
 
-    <% hidden_field_tag :num_passengers, params[:num_passengers] %>
+    <%= hidden_field_tag :num_passengers, params[:num_passengers] %>
 
     <% @queried_flights.each do |flight| %>
       <div class = "form row">
